@@ -1,31 +1,18 @@
 const express = require('express');
+const post = require('./post.js');
+const comment = require('./comment.js');
+
 const app = express();
 
-// Notice how I'm specificifying a specific endpoint
-// and HTTP verb (here `get`)
-app.get('/', (req, res) => {
-    res.send('Hello web dev!');
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+// app.use(express.json({ type: ['application/json', 'text/plain']}));
 
-// login
+// Note that it is common practice got backend APIs in Node to start with the api prefix
+// to distinguish them from frontend routes
+app.use('/api/post', post);
+app.use('/api/comment', comment);
 
-
-
-
-
-
-
-// This list will be accessible to everything in this file
-// const comments = [
-//     ...
-//   ]
-  
-//   app.post("/comments", (req, res) => {
-//        comments.push(...);
-  
-//        ....
-//   }
-
-app.listen(8000, () => {
-  console.log('Starting server');
+app.listen(8000, function() {
+    console.log('Server is on!');
 });
