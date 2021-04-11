@@ -8,7 +8,6 @@ import postRoutes from './routes/posts.js';
 import commentRoutes from './routes/comments.js';
 const app = express();
 
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());

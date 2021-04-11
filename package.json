@@ -1,12 +1,13 @@
 {
-  "name": "backend",
+  "name": "gobiem-arealj-project3-backend",
   "version": "1.0.0",
-  "description": "backend for hacker news",
+  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "nodemon index.js"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
