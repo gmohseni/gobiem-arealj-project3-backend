@@ -6,6 +6,7 @@ const cors = require('cors');
 
 import postRoutes from './routes/posts.js';
 import commentRoutes from './routes/comments.js';
+import accountRoutes from './routes/accounts.js';
 const app = express();
 
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use(cors());
 // to distinguish them from frontend routes
 app.use('/post', postRoutes);
 app.use('/comment',commentRoutes);
+app.use('/account',accountRoutes);
 // app.use('/api/comment', comment);
 
 
