@@ -9,7 +9,8 @@ const postSchema = mongoose.Schema({
     createdAt: {
         type: Date,
         default: new Date()
-    }
+    },
+    comments: []
 });
 
 const PostPost = mongoose.model('PostPost', postSchema);

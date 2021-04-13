@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 
 
 const postSchema = mongoose.Schema({
+    firstname: String,
+    lastname: String,
     username: String,
     password: String,
 });

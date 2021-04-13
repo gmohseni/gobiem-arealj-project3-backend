@@ -16,7 +16,7 @@ app.use(cors());
 // Note that it is common practice got backend APIs in Node to start with the api prefix
 // to distinguish them from frontend routes
 app.use('/post', postRoutes);
-app.use('/comment',commentRoutes);
+// app.use('/comment',commentRoutes);
 app.use('/account',accountRoutes);
 // app.use('/api/comment', comment);
 
