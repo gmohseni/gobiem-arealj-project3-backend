@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import PostPost from '../models/postPost.js';
+const { v4: uuidv4 } = require('uuid');
 
 export const getPosts = async (req, res) => { 
     try{
@@ -43,6 +44,7 @@ export const createComment = async (req, res) => {
     try{
         const { id: _id } = req.params;
         const comment = req.body;
+        comment.id = uuidv4();
         if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("No post with that id");
 
         const foundPost = await PostPost.findByIdAndUpdate(_id, {$push: {comments: comment}}, {new: true});
@@ -62,6 +64,19 @@ export const deletePost = async (req, res) => {
     await PostPost.findByIdAndRemove(id);
 
     res.json({ message: "Post deleted successfully"});
+}
+
+export const deleteComment = async (req, res) => {
+    // console.log(req.params);
+    const { id, commentId } = req.params;
+    
+
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("No post with that id");
+
+
+    await PostPost.findById(id).findByIdAndDelete(commentId);
+
+    res.json({ message: "Comment deleted successfully"});
 }
 
 export const updatePost = async (req, res) => {
