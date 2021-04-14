@@ -45,9 +45,8 @@ export const createComment = async (req, res) => {
         const comment = req.body;
         if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("No post with that id");
 
-        const foundPost = await PostPost.findByIdAndUpdate(_id, {...comment, _id}, {new: true});
+        const foundPost = await PostPost.findByIdAndUpdate(_id, {$push: {comments: comment}}, {new: true});
 
-        console.log(foundPost);
         res.json({message: "Post updated successfully", foundPost});
 
     } catch (error){
