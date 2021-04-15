@@ -10,7 +10,8 @@ router.post('/', createPost);
 router.post('/:id', createComment);
 router.delete('/:id', deletePost);
 router.patch('/:id', updatePost);
-router.delete('/:postId/:commentId', deleteComment);
+// router.delete('/:postId/:comment', deleteComment);
+router.delete('/:id', updatePost);
    
 
 export default router;

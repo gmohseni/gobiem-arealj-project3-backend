@@ -49,7 +49,7 @@ export const createComment = async (req, res) => {
 
         const foundPost = await PostPost.findByIdAndUpdate(_id, {$push: {comments: comment}}, {new: true});
 
-        res.json({message: "Post updated successfully", foundPost});
+        res.json({message: "Post updated successfully with comment", foundPost});
 
     } catch (error){
         res.status(409).json({message: error.message});
@@ -67,7 +67,7 @@ export const deletePost = async (req, res) => {
 }
 
 export const deleteComment = async (req, res) => {
-    // console.log(req.params);
+    console.log(req.params);
     const { id, commentId } = req.params;
     
 
@@ -88,5 +88,5 @@ export const updatePost = async (req, res) => {
 
     const foundPost = await PostPost.findByIdAndUpdate(_id, {...post, _id}, {new: true});
 
-    res.json({message: "Post updated successfully", foundPost});
+    res.json({message: "Post updated successfully, just post", foundPost});
 };
