@@ -28,6 +28,23 @@ export const getPostById = async (req, res) => {
     }
 }
 
+
+export const getCommentById = async (req, res) => { 
+    try{
+        const {id: _id, commentId: commentId} = req.params;
+       
+        
+        if(!mongoose.Types.ObjectId.isValid(commentId)) return res.status(404).send("No post with that id");
+
+        const postPost = await PostPost.findOne({"comments.id": commentId});
+    
+        res.status(200).json(postPost);
+    } catch (error){
+        console.log(error);
+        res.status(404).json({message: error.message});
+    }
+}
+
 export const createPost = async (req, res) => {
     const post = req.body;
     const newPost = new PostPost(post);
@@ -67,12 +84,11 @@ export const deletePost = async (req, res) => {
 }
 
 export const deleteComment = async (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
     const { id, commentId } = req.params;
     
 
     if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("No post with that id");
-
 
     await PostPost.findById(id).findByIdAndDelete(commentId);
 
@@ -90,3 +106,5 @@ export const updatePost = async (req, res) => {
 
     res.json({message: "Post updated successfully, just post", foundPost});
 };
+
+
