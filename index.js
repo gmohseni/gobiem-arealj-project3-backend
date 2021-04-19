@@ -6,7 +6,7 @@ const cors = require('cors');
 
 import postRoutes from './routes/posts.js';
 import commentRoutes from './routes/comments.js';
-import accountRoutes from './routes/accounts.js';
+import accountRoutes from './routes/account.js';
 const app = express();
 
 app.use(express.json());
