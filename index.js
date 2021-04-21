@@ -19,7 +19,9 @@ app.use('/post', postRoutes);
 // app.use('/comment',commentRoutes);
 app.use('/account',accountRoutes);
 // app.use('/api/comment', comment);
-
+app.get('/', (req,res) => {
+    res.send('Our API')
+});
 
 const CONNECTION_URL = 'mongodb+srv://gmohseni:project3@cluster0.llroe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 8000;
