@@ -35,7 +35,8 @@ export const signin = async (req, res) => {
     const { username, password } = req.body;
     try {
       const existingUser = await User.findOne({ username });
-      if (existingUser) return res.status(400).json({ message: "User already exists" });
+      
+    if (existingUser) return res.status(400).json({ message: "User already exists" });
 
       const hashedPassword = await bcrypt.hash(password, 12);
       const result = await User.create({ username, password: hashedPassword });
@@ -43,9 +44,9 @@ export const signin = async (req, res) => {
   
       res.status(201).json({ result, token });
     } catch (error) {
-      // res.status(500).json({ message: "Something went wrong" });
-      // error.response.data
-      // console.error(error.response.data);
+      res.status(500).json({ message: "Something went wrong" });
+      error.response.data
+      console.error(error.response.data);
     }
   };
 
