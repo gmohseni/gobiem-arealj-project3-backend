@@ -1,11 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const post = require('./post.js');
-const comment = require('./comment.js');
 const cors = require('cors');
 
 import postRoutes from './routes/posts.js';
-import commentRoutes from './routes/comments.js';
 import accountRoutes from './routes/account.js';
 const app = express();
 
@@ -16,9 +13,8 @@ app.use(cors());
 // Note that it is common practice got backend APIs in Node to start with the api prefix
 // to distinguish them from frontend routes
 app.use('/post', postRoutes);
-// app.use('/comment',commentRoutes);
 app.use('/account',accountRoutes);
-// app.use('/api/comment', comment);
+
 app.get('/', (req,res) => {
     res.send('Our API')
 });
