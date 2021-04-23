@@ -1,7 +1,5 @@
 const express = require('express');
 
-// getAccount--> signin
-// createAccount --> signup
 import {signin, signup, fetchUsers} from '../controllers/account.js'; 
 const router = express.Router();
 
