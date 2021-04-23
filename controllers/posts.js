@@ -28,6 +28,23 @@ export const getPostById = async (req, res) => {
     }
 }
 
+export const getPostByAuthor = async (req, res) => { 
+    console.log("AM I GETTING HERE");
+    try{
+        console.log(req.params);
+        // const { id: _id } = req.params;
+
+        // if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("No post with that id");
+
+        // const postPost = await PostPost.findById(_id);
+    
+        res.status(200).json(postPost);
+    } catch (error){
+        console.log(error);
+        res.status(404).json({message: error.message});
+    }
+}
+
 
 export const getCommentById = async (req, res) => { 
     try{
